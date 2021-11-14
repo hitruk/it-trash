@@ -1,0 +1,17 @@
+
+Fast commands
+
+1 Инициализация git
+git init .
+
+2 Посмотреть статус
+git status
+
+3 Добавить снимок
+git add file_name (file_name* если добавляем все файлы в директории)
+
+4 Cоздаем commit
+git commit -m 'my comments'
+
+5 Делаем push
+git push
