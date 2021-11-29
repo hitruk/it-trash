@@ -36,3 +36,25 @@ git commit -m 'my comments'
 
 5 Делаем push
 git push
+
+6 Посмотреть все ветки branch:
+git branch
+
+Создать ветку:
+git branch имя_бренча
+
+Перейти на ветку:
+git checkout имя_бренча
+
+Удалить ветку:
+git branch -d имя_бранча
+
+Создать и перейти на ветку:
+git checkout -b имя_ветки
+ 
+
+7 Посмотреть историю commit:
+git log
+
+
+
