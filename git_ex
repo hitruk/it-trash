@@ -30,6 +30,8 @@ git status
 
 3 Добавить снимок в индекс (index)
 git add file_name (file_name* если добавляем все файлы в директории)
+Отмена 
+git reset
 
 4 Cоздаем commit изменений
 git commit -m 'my comments'
