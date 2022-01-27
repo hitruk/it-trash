@@ -1,4 +1,80 @@
 
+Перед началом работы!
+
+1) Проверка установки(смотрим статус)
+
+systemctl status postgresql
+
+
+Настройка Postgresql
+
+1) входим под учетной записью postgres
+
+sudo -i -u postgres
+psql
+
+2) задаем пароль для пользоватиля 
+postgres 
+
+\password postgres (далее задаем пароль)
+
+3) Создвем нового пользовыателя на сервере Postgresql, работать от имени пользователя postgres не рекомендуется
+
+CREATE USER username WITH PASSWORD 'password_user';
+
+4) Создаем базу данных test_db
+create database test_db;
+
+5) Дать правасозданному  пользователю на управление DB:
+
+grant all privileges on database test_db to username; (test_db - DB, username - имя пользователя)
+
+6) Выход из консоли 
+CTRL+D
+
+7) Проверка Для проверки давайте подключимся к PostgreSQL от имени нового пользователя, на предложение о вводе пароля вводим пароль от новой учетной записи.
+psql -U имя_пользователя -d имя_базы_данных -h 127.0.0.1 -W
+
+8) Выход
+exit
+
+#---
+
+Подключение по сети
+
+1) открываем файл postgresql.conf, например, редактором vim.
+
+vim /etc/postgresql/12/main/postgresql.conf
+
+2) Находим следующую строку.
+   
+#listen_addresses = 'localhost'
+
+и вносим следующие изменения (вместо звездочки Вы в случае необходимости указываете IP адрес нужного интерфейса).
+
+listen_addresses = '*'
+
+Сохраняем изменения
+
+3) Теперь давайте разрешим подключение из сети, я для примера разрешу подключаться из сети 192.168.1.0/24 с методом аутентификации md5.
+
+Для этого открываем файл pg_hba.conf
+
+vim /etc/postgresql/12/main/pg_hba.conf
+
+4) в колонке ADDRESS указываем нужную нам сеть
+Например: 192.168.1.24
+
+5) Если не используем IPv6 можно будет закометировать данную строку.
+
+6) Сохраняем перезапускаем сервер postgresql
+
+systemctl re  systemctl restart postgresql
+или через сервис:
+sudo service postgresql stop|start|restart|status 
+
+#---
+
 
 Настройка postgresql 12
 
